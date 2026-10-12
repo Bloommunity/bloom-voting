@@ -132,6 +132,19 @@ select:focus-visible {
 	color: var(--ink);
 	text-decoration: none;
 }
+.brand-vote-icon {
+	width: 20px;
+	height: 20px;
+	flex: 0 0 20px;
+	fill: none;
+	stroke: var(--green);
+	stroke-width: 1.8;
+	stroke-linecap: round;
+	stroke-linejoin: round;
+}
+.brand-vote-check {
+	stroke: var(--coral);
+}
 .brand-name {
 	font-size: 17px;
 	font-weight: 800;

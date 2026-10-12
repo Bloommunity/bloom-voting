@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import faviconUrl from "~/assets/icon.png";
+import faviconUrl from "~/assets/vote-favicon.svg";
 
 type Shortcut = {
 	id: string;
@@ -17,7 +17,7 @@ useSeoMeta({
 });
 
 useHead({
-	link: [{ rel: "icon", type: "image/png", href: faviconUrl }],
+	link: [{ rel: "icon", type: "image/svg+xml", href: faviconUrl }],
 });
 
 const shortcuts = ref<Shortcut[]>([]);
@@ -212,7 +212,12 @@ async function toggleFrameFullscreen() {
 	<div class="app-shell" :data-theme="resolvedTheme">
 		<header class="topbar">
 			<a class="brand" href="/" aria-label="Bloom Voting home">
-				<span class="brand-name">bloom<span>.</span></span>
+				<span class="brand-name">bloom</span>
+				<svg class="brand-vote-icon" viewBox="0 0 24 24" aria-hidden="true">
+					<path d="M5 10h14v10H5zM8 10V4h7l3 3v3" />
+					<path class="brand-vote-check" d="m10 7 1.5 1.5L14 6" />
+					<path d="M9 13h6" />
+				</svg>
 			</a>
 			<nav class="nav-controls" aria-label="Voting controls">
 				<label class="category-picker" for="category-select">
