@@ -28,6 +28,7 @@ const viewerStageRef = ref<HTMLElement | null>(null);
 const isFullscreen = ref(false);
 const themeMode = ref<ThemeMode>("system");
 const prefersDarkMode = ref(false);
+const spotifyPlayerOpen = ref(false);
 const nameInput = ref("");
 const urlInput = ref("");
 const editingId = ref<string | null>(null);
@@ -254,6 +255,34 @@ async function toggleFrameFullscreen() {
 					<span aria-hidden="true">↗</span>
 				</a>
 			</nav>
+			<div class="spotify-menu" :class="{ 'is-open': spotifyPlayerOpen }">
+				<button
+					class="spotify-toggle"
+					type="button"
+					:aria-expanded="spotifyPlayerOpen"
+					aria-controls="spotify-player"
+					@click="spotifyPlayerOpen = !spotifyPlayerOpen"
+				>
+					<span>Spotify</span>
+					<span>{{ spotifyPlayerOpen ? "Close" : "Music" }}</span>
+				</button>
+				<div class="spotify-player-window" v-show="spotifyPlayerOpen">
+					<iframe
+						id="spotify-player"
+						class="spotify-player"
+						src="https://open.spotify.com/embed/playlist/1eoVOqdyxzDkOtkGnVf58V?utm_source=generator&theme=0"
+						title="Spotify playlist background music"
+						allow="
+							autoplay;
+							clipboard-write;
+							encrypted-media;
+							fullscreen;
+							picture-in-picture;
+						"
+						loading="eager"
+					></iframe>
+				</div>
+			</div>
 		</header>
 
 		<main class="page-content">
